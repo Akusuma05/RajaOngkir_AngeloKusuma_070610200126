@@ -17,15 +17,15 @@ class RajaOngkirServices {
     );
   }
 
-  static Future<http.Response> sendemail() {
+  static Future<http.Response> sendemail(String email) {
     return http.post(
       Uri.https(
-          Const.baseUrl, "/week5/cirestapi/cirestapi/api/Mahasiswa/sendemail"),
+          Const.smtpurl, "/week5/cirestapi/cirestapi/api/Mahasiswa/sendmail"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, dynamic>{
-        'email': 'angelo_kusuma@yahoo.com',
+        'email': email,
       }),
     );
   }
