@@ -1,14 +1,11 @@
 part of 'models.dart';
 
-class City extends Equatable {
-  final String? cityId;
-  final String? provinceId;
-  final String? province;
-  final String? type;
-  final String? cityName;
-  final String? postalCode;
+City cityFromJson(String str) => City.fromJson(json.decode(str));
 
-  const City({
+String cityToJson(City data) => json.encode(data.toJson());
+
+class City {
+  City({
     this.cityId,
     this.provinceId,
     this.province,
@@ -17,54 +14,28 @@ class City extends Equatable {
     this.postalCode,
   });
 
+  String? cityId;
+  String? provinceId;
+  String? province;
+  String? type;
+  String? cityName;
+  String? postalCode;
+
   factory City.fromJson(Map<String, dynamic> json) => City(
-        cityId: json['city_id'] as String?,
-        provinceId: json['province_id'] as String?,
-        province: json['province'] as String?,
-        type: json['type'] as String?,
-        cityName: json['city_name'] as String?,
-        postalCode: json['postal_code'] as String?,
+        cityId: json["city_id"],
+        provinceId: json["province_id"],
+        province: json["province"],
+        type: json["type"],
+        cityName: json["city_name"],
+        postalCode: json["postal_code"],
       );
 
   Map<String, dynamic> toJson() => {
-        'city_id': cityId,
-        'province_id': provinceId,
-        'province': province,
-        'type': type,
-        'city_name': cityName,
-        'postal_code': postalCode,
+        "city_id": cityId,
+        "province_id": provinceId,
+        "province": province,
+        "type": type,
+        "city_name": cityName,
+        "postal_code": postalCode,
       };
-
-  City copyWith({
-    String? cityId,
-    String? provinceId,
-    String? province,
-    String? type,
-    String? cityName,
-    String? postalCode,
-  }) {
-    return City(
-      cityId: cityId ?? this.cityId,
-      provinceId: provinceId ?? this.provinceId,
-      province: province ?? this.province,
-      type: type ?? this.type,
-      cityName: cityName ?? this.cityName,
-      postalCode: postalCode ?? this.postalCode,
-    );
-  }
-
-  @override
-  bool get stringify => true;
-
-  @override
-  List<Object?> get props {
-    return [
-      cityId,
-      provinceId,
-      province,
-      type,
-      cityName,
-      postalCode,
-    ];
-  }
 }

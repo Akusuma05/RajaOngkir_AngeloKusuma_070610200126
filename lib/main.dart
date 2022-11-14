@@ -1,9 +1,13 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_application_1/services/services.dart';
 import 'package:flutter_application_1/views/pages/emailpage.dart';
 import 'package:flutter_application_1/views/pages/pages.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:uni_links/uni_links.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const emailpage(),
+      home: const Ongkirpage(),
     );
   }
 }
